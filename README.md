@@ -5,4 +5,3 @@ Application descriptor repository for a Search application.
 | Module name              |
 |:-------------------------|
 | `mod-search`             |
-Application descriptor repository for app-search.
