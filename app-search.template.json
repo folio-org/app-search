@@ -12,7 +12,7 @@
   "modules": [
     {
       "name": "mod-search",
-      "version": "latest"
+      "version": "6.0.0-SNAPSHOT.2064"
     }
   ]
 }
