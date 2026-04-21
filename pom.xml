@@ -6,7 +6,7 @@
   <artifactId>app-search</artifactId>
   <groupId>org.folio</groupId>
   <description>Search Application</description>
-  <version>1.0.0-SNAPSHOT</version>
+  <version>2.0.0</version>
 
   <properties>
     <project.name>app-search</project.name>
