@@ -1,12 +1,12 @@
 {
-  "id" : "app-search-1.0.7",
+  "id" : "app-search-1.0.8",
   "name" : "app-search",
-  "version" : "1.0.7",
+  "version" : "1.0.8",
   "description" : "Search Application",
   "modules" : [ {
-    "id" : "mod-search-6.0.7",
+    "id" : "mod-search-6.0.8",
     "name" : "mod-search",
-    "version" : "6.0.7"
+    "version" : "6.0.8"
   } ],
   "uiModules" : [ ],
   "dependencies" : [ {
@@ -15,7 +15,7 @@
     "preRelease" : "false"
   } ],
   "moduleDescriptors" : [ {
-    "id" : "mod-search-6.0.7",
+    "id" : "mod-search-6.0.8",
     "name" : "Search Module",
     "requires" : [ {
       "id" : "login",
@@ -519,7 +519,7 @@
       }
     },
     "launchDescriptor" : {
-      "dockerImage" : "folioorg/mod-search:6.0.7",
+      "dockerImage" : "folioorg/mod-search:6.0.8",
       "dockerPull" : true,
       "env" : [ {
         "name" : "ENV",
