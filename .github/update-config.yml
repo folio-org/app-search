@@ -6,7 +6,7 @@ update_config:
   pr_reviewers:
     - folio-org/kitfox
     - folio-org/fse-platform
-    - folio-org/spitfire
+    - folio-org/promin
   ruleset:
     enabled: true
     pattern: "{0}-eureka-ci"
