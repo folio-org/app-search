@@ -1,12 +1,12 @@
 {
-  "id" : "app-search-1.1.0-SNAPSHOT.100200000011229",
+  "id" : "app-search-1.1.0-SNAPSHOT.100200000011294",
   "name" : "app-search",
-  "version" : "1.1.0-SNAPSHOT.100200000011229",
+  "version" : "1.1.0-SNAPSHOT.100200000011294",
   "description" : "Search Application",
   "modules" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2692",
+    "id" : "mod-search-6.1.0-SNAPSHOT.f2d25d3",
     "name" : "mod-search",
-    "version" : "6.1.0-SNAPSHOT.2692"
+    "version" : "6.1.0-SNAPSHOT.f2d25d3"
   } ],
   "uiModules" : [ ],
   "dependencies" : [ {
@@ -15,7 +15,7 @@
     "preRelease" : "only"
   } ],
   "moduleDescriptors" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2692",
+    "id" : "mod-search-6.1.0-SNAPSHOT.f2d25d3",
     "name" : "Search Module",
     "provides" : [ {
       "id" : "indices",
@@ -85,11 +85,11 @@
       } ]
     }, {
       "id" : "search-linked-data",
-      "version" : "1.1",
+      "version" : "1.0",
       "handlers" : [ {
         "methods" : [ "GET" ],
-        "pathPattern" : "/search/linked-data/authorities",
-        "permissionsRequired" : [ "search.linked-data.authority.collection.get" ],
+        "pathPattern" : "/search/linked-data/instances",
+        "permissionsRequired" : [ "search.linked-data.instance.collection.get" ],
         "modulePermissions" : [ "user-tenants.collection.get" ]
       }, {
         "methods" : [ "GET" ],
@@ -274,7 +274,7 @@
       "handlers" : [ {
         "methods" : [ "POST" ],
         "pathPattern" : "/_/tenant",
-        "modulePermissions" : [ "user-tenants.collection.get", "inventory-storage.instance.reindex.post", "authority-storage.authority.reindex.post", "inventory-storage.inventory-view.instances.collection.get", "inventory-storage.identifier-types.collection.get", "inventory-storage.alternative-title-types.collection.get", "instance-authority-links.authorities.bulk.post", "inventory-storage.locations.collection.get", "inventory-storage.location-units.campuses.collection.get", "inventory-storage.location-units.libraries.collection.get", "inventory-storage.location-units.institutions.collection.get", "inventory-storage.reindex-records.publish.post", "inventory-storage.instances.collection.get", "inventory-storage.items.collection.get", "inventory-storage.holdings.collection.get" ]
+        "modulePermissions" : [ "user-tenants.collection.get", "users.collection.get", "users.item.post", "users.item.put", "login.item.post", "login.item.delete", "perms.users.get", "perms.users.item.post", "perms.users.assign.immutable", "perms.users.assign.mutable", "inventory-storage.instance.reindex.post", "authority-storage.authority.reindex.post", "inventory-storage.inventory-view.instances.collection.get", "inventory-storage.identifier-types.collection.get", "inventory-storage.alternative-title-types.collection.get", "instance-authority-links.authorities.bulk.post", "inventory-storage.locations.collection.get", "inventory-storage.location-units.campuses.collection.get", "inventory-storage.location-units.libraries.collection.get", "inventory-storage.location-units.institutions.collection.get", "inventory-storage.reindex-records.publish.post", "inventory-storage.instances.collection.get", "inventory-storage.items.collection.get", "inventory-storage.holdings.collection.get" ]
       }, {
         "methods" : [ "DELETE", "GET" ],
         "pathPattern" : "/_/tenant/{id}"
@@ -323,6 +323,16 @@
       "id" : "classification-types",
       "version" : "1.2"
     } ],
+    "requires" : [ {
+      "id" : "login",
+      "version" : "7.0"
+    }, {
+      "id" : "permissions",
+      "version" : "5.3"
+    }, {
+      "id" : "users",
+      "version" : "15.3 16.0"
+    } ],
     "permissionSets" : [ {
       "permissionName" : "search.index.indices.item.post",
       "displayName" : "Search - creates an index",
@@ -360,9 +370,9 @@
       "displayName" : "Search - searches authorities by given query",
       "description" : "Searches authorities by given query"
     }, {
-      "permissionName" : "search.linked-data.authority.collection.get",
-      "displayName" : "Search - searches linked data authorities by given query",
-      "description" : "Searches linked data authorities by given query"
+      "permissionName" : "search.linked-data.instance.collection.get",
+      "displayName" : "Search - searches linked data instances by given query",
+      "description" : "Searches linked data instances by given query"
     }, {
       "permissionName" : "search.linked-data.work.collection.get",
       "displayName" : "Search - searches linked data works by given query",
@@ -417,9 +427,9 @@
       "description" : "Returns reindex status for entities"
     }, {
       "permissionName" : "search.facets.collection.get",
-      "replaces" : [ "search.instances.facets.collection.get" ],
       "displayName" : "Search - returns facets for a query for given filter options by record type",
-      "description" : "Returns facets for a query for given filter options by record type"
+      "description" : "Returns facets for a query for given filter options by record type",
+      "replaces" : [ "search.instances.facets.collection.get" ]
     }, {
       "permissionName" : "search.resources.ids.collection.get",
       "displayName" : "Search - returns a list of authority ids found for the CQL query",
@@ -505,12 +515,22 @@
     "metadata" : {
       "user" : {
         "type" : "system",
-        "permissions" : [ "user-tenants.collection.get", "authority-identifier-types.collection.get", "inventory-storage.instance.reindex.post", "authority-storage.authority.reindex.post", "inventory-storage.inventory-view.instances.collection.get", "inventory-storage.identifier-types.collection.get", "inventory-storage.alternative-title-types.collection.get", "instance-authority-links.authorities.bulk.post", "inventory-storage.locations.collection.get", "inventory-storage.location-units.campuses.collection.get", "inventory-storage.location-units.libraries.collection.get", "inventory-storage.location-units.institutions.collection.get", "inventory-storage.reindex-records.publish.post", "inventory-storage.instances.collection.get", "inventory-storage.items.collection.get", "inventory-storage.holdings.collection.get" ]
+        "permissions" : [ "user-tenants.collection.get", "users.collection.get", "users.item.post", "login.item.post", "login.item.delete", "perms.users.get", "perms.users.item.post", "perms.users.assign.immutable", "perms.users.assign.mutable", "authority-identifier-types.collection.get", "inventory-storage.instance.reindex.post", "authority-storage.authority.reindex.post", "inventory-storage.inventory-view.instances.collection.get", "inventory-storage.identifier-types.collection.get", "inventory-storage.alternative-title-types.collection.get", "instance-authority-links.authorities.bulk.post", "inventory-storage.locations.collection.get", "inventory-storage.location-units.campuses.collection.get", "inventory-storage.location-units.libraries.collection.get", "inventory-storage.location-units.institutions.collection.get", "inventory-storage.reindex-records.publish.post", "inventory-storage.instances.collection.get", "inventory-storage.items.collection.get", "inventory-storage.holdings.collection.get" ]
       }
     },
     "launchDescriptor" : {
-      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2692",
-      "dockerPull" : true,
+      "dockerImage" : "mod-search:6.1.0-SNAPSHOT.f2d25d3",
+      "dockerPull" : false,
+      "dockerArgs" : {
+        "HostConfig" : {
+          "Memory" : 1073741824,
+          "PortBindings" : {
+            "8081/tcp" : [ {
+              "HostPort" : "%p"
+            } ]
+          }
+        }
+      },
       "env" : [ {
         "name" : "ENV",
         "value" : "folio",
@@ -688,9 +708,17 @@
         "value" : "5",
         "description" : "Provides the maximum number of supported languages"
       }, {
+        "name" : "SYSTEM_USER_USERNAME",
+        "value" : "mod-search",
+        "description" : "Username for `mod-search` system user"
+      }, {
+        "name" : "SYSTEM_USER_PASSWORD",
+        "value" : "",
+        "description" : "Password for `mod-search` system user (not required for dev envs)"
+      }, {
         "name" : "OKAPI_URL",
         "value" : "",
-        "description" : "Used for module-to-module requests"
+        "description" : "OKAPI URL used to login system user, required"
       }, {
         "name" : "SEARCH_BY_ALL_FIELDS_ENABLED",
         "value" : "false",
@@ -807,17 +835,7 @@
         "name" : "S3_REINDEX_IS_AWS",
         "value" : "true",
         "description" : "Controls whether AWS-compatible SDK behavior is used for reindex EXPORT remote storage."
-      } ],
-      "dockerArgs" : {
-        "HostConfig" : {
-          "Memory" : 1073741824,
-          "PortBindings" : {
-            "8081/tcp" : [ {
-              "HostPort" : "%p"
-            } ]
-          }
-        }
-      }
+      } ]
     }
   } ],
   "uiModuleDescriptors" : [ ]
