@@ -1,12 +1,12 @@
 {
-  "id" : "app-search-1.1.0-SNAPSHOT.100200000012219",
+  "id" : "app-search-1.1.0-SNAPSHOT.100200000012223",
   "name" : "app-search",
-  "version" : "1.1.0-SNAPSHOT.100200000012219",
+  "version" : "1.1.0-SNAPSHOT.100200000012223",
   "description" : "Search Application",
   "modules" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2784",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2787",
     "name" : "mod-search",
-    "version" : "6.1.0-SNAPSHOT.2784"
+    "version" : "6.1.0-SNAPSHOT.2787"
   } ],
   "uiModules" : [ ],
   "dependencies" : [ {
@@ -15,7 +15,7 @@
     "preRelease" : "only"
   } ],
   "moduleDescriptors" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2784",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2787",
     "name" : "Search Module",
     "provides" : [ {
       "id" : "indices",
@@ -509,7 +509,7 @@
       }
     },
     "launchDescriptor" : {
-      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2784",
+      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2787",
       "dockerPull" : true,
       "env" : [ {
         "name" : "ENV",
