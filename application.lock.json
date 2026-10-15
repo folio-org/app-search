@@ -1,12 +1,12 @@
 {
-  "id" : "app-search-1.1.0-SNAPSHOT.100200000012249",
+  "id" : "app-search-1.1.0-SNAPSHOT.100200000012263",
   "name" : "app-search",
-  "version" : "1.1.0-SNAPSHOT.100200000012249",
+  "version" : "1.1.0-SNAPSHOT.100200000012263",
   "description" : "Search Application",
   "modules" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2807",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2817",
     "name" : "mod-search",
-    "version" : "6.1.0-SNAPSHOT.2807"
+    "version" : "6.1.0-SNAPSHOT.2817"
   } ],
   "uiModules" : [ ],
   "dependencies" : [ {
@@ -15,7 +15,7 @@
     "preRelease" : "only"
   } ],
   "moduleDescriptors" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2807",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2817",
     "name" : "Search Module",
     "provides" : [ {
       "id" : "indices",
@@ -67,11 +67,16 @@
       } ]
     }, {
       "id" : "search-inventory",
-      "version" : "1.0",
+      "version" : "1.1",
       "handlers" : [ {
         "methods" : [ "GET" ],
         "pathPattern" : "/search/instances",
         "permissionsRequired" : [ "search.instances.collection.get" ],
+        "modulePermissions" : [ "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "GET" ],
+        "pathPattern" : "/search/inventory/items",
+        "permissionsRequired" : [ "search.inventory.items.collection.get" ],
         "modulePermissions" : [ "user-tenants.collection.get" ]
       } ]
     }, {
@@ -356,6 +361,10 @@
       "displayName" : "Search - searches instances by given query",
       "description" : "Searches instances by given query"
     }, {
+      "permissionName" : "search.inventory.items.collection.get",
+      "displayName" : "Search - searches items by given query",
+      "description" : "Searches items by given query"
+    }, {
       "permissionName" : "search.authorities.collection.get",
       "displayName" : "Search - searches authorities by given query",
       "description" : "Searches authorities by given query"
@@ -509,7 +518,7 @@
       }
     },
     "launchDescriptor" : {
-      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2807",
+      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2817",
       "dockerPull" : true,
       "env" : [ {
         "name" : "ENV",
