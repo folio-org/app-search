@@ -1,12 +1,12 @@
 {
-  "id" : "app-search-1.1.0-SNAPSHOT.100200000012418",
+  "id" : "app-search-1.1.0-SNAPSHOT.100200000012424",
   "name" : "app-search",
-  "version" : "1.1.0-SNAPSHOT.100200000012418",
+  "version" : "1.1.0-SNAPSHOT.100200000012424",
   "description" : "Search Application",
   "modules" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2866",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2874",
     "name" : "mod-search",
-    "version" : "6.1.0-SNAPSHOT.2866"
+    "version" : "6.1.0-SNAPSHOT.2874"
   } ],
   "uiModules" : [ ],
   "dependencies" : [ {
@@ -15,11 +15,11 @@
     "preRelease" : "only"
   } ],
   "moduleDescriptors" : [ {
-    "id" : "mod-search-6.1.0-SNAPSHOT.2866",
+    "id" : "mod-search-6.1.0-SNAPSHOT.2874",
     "name" : "Search Module",
     "provides" : [ {
       "id" : "indices",
-      "version" : "1.2",
+      "version" : "1.3",
       "handlers" : [ {
         "methods" : [ "POST" ],
         "pathPattern" : "/search/index/indices",
@@ -63,6 +63,36 @@
         "methods" : [ "POST" ],
         "pathPattern" : "/search/index/instance-records/reindex/merge/failed",
         "permissionsRequired" : [ "search.index.instance-records.reindex.merge.failed.post" ],
+        "modulePermissions" : [ "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "POST" ],
+        "pathPattern" : "/search/index/item-records/reindex/full",
+        "permissionsRequired" : [ "search.index.item-records.reindex.full.post" ],
+        "modulePermissions" : [ "inventory-storage.reindex-records.publish.post", "inventory-storage.items.collection.get", "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "POST" ],
+        "pathPattern" : "/search/index/item-records/reindex/failed",
+        "permissionsRequired" : [ "search.index.item-records.reindex.failed.post" ],
+        "modulePermissions" : [ "inventory-storage.reindex-records.publish.post", "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "GET" ],
+        "pathPattern" : "/search/index/item-records/reindex/status",
+        "permissionsRequired" : [ "search.index.item-records.reindex.status.get" ],
+        "modulePermissions" : [ "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "POST" ],
+        "pathPattern" : "/search/index/call-number-records/reindex/full",
+        "permissionsRequired" : [ "search.index.call-number-records.reindex.full.post" ],
+        "modulePermissions" : [ "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "POST" ],
+        "pathPattern" : "/search/index/call-number-records/reindex/failed",
+        "permissionsRequired" : [ "search.index.call-number-records.reindex.failed.post" ],
+        "modulePermissions" : [ "user-tenants.collection.get" ]
+      }, {
+        "methods" : [ "GET" ],
+        "pathPattern" : "/search/index/call-number-records/reindex/status",
+        "permissionsRequired" : [ "search.index.call-number-records.reindex.status.get" ],
         "modulePermissions" : [ "user-tenants.collection.get" ]
       } ]
     }, {
@@ -293,7 +323,7 @@
       "version" : "1.0"
     }, {
       "id" : "inventory-reindex-records",
-      "version" : "1.0"
+      "version" : "1.2"
     }, {
       "id" : "locations",
       "version" : "3.0"
@@ -356,6 +386,30 @@
       "permissionName" : "search.index.instance-records.reindex.merge.failed.post",
       "displayName" : "Search - starts inventory instance records reindex merge failed operation",
       "description" : "Starts inventory instance records reindexing for failed merge ranges"
+    }, {
+      "permissionName" : "search.index.item-records.reindex.full.post",
+      "displayName" : "Search - starts item records reindex operation",
+      "description" : "Rebuilds the item index from inventory, or reloads documents of a single consortium tenant"
+    }, {
+      "permissionName" : "search.index.item-records.reindex.failed.post",
+      "displayName" : "Search - resumes failed item records reindex operation",
+      "description" : "Resumes failed and interrupted item records reindex runs"
+    }, {
+      "permissionName" : "search.index.item-records.reindex.status.get",
+      "displayName" : "Search - gets item records reindex status",
+      "description" : "Gets the item index rebuild state per tenant"
+    }, {
+      "permissionName" : "search.index.call-number-records.reindex.full.post",
+      "displayName" : "Search - starts call number records reindex operation",
+      "description" : "Rebuilds the call number index from the item index"
+    }, {
+      "permissionName" : "search.index.call-number-records.reindex.failed.post",
+      "displayName" : "Search - resumes failed call number records reindex operation",
+      "description" : "Resumes a failed or interrupted call number records reindex"
+    }, {
+      "permissionName" : "search.index.call-number-records.reindex.status.get",
+      "displayName" : "Search - gets call number records reindex status",
+      "description" : "Gets the call number index rebuild state per tenant"
     }, {
       "permissionName" : "search.instances.collection.get",
       "displayName" : "Search - searches instances by given query",
@@ -509,7 +563,7 @@
       "permissionName" : "search.index.instance-records.reindex.all",
       "displayName" : "Search Instance Records Re-Index - All permissions",
       "description" : "Entire set of permissions needed to manage  Instance Records Re-Index",
-      "subPermissions" : [ "search.index.instance-records.reindex.status.get", "search.index.instance-records.reindex.full.post", "search.index.instance-records.reindex.upload.post", "search.index.instance-records.reindex.failed.post" ]
+      "subPermissions" : [ "search.index.instance-records.reindex.status.get", "search.index.instance-records.reindex.full.post", "search.index.instance-records.reindex.upload.post", "search.index.instance-records.reindex.failed.post", "search.index.item-records.reindex.full.post", "search.index.item-records.reindex.failed.post", "search.index.item-records.reindex.status.get", "search.index.call-number-records.reindex.full.post", "search.index.call-number-records.reindex.failed.post", "search.index.call-number-records.reindex.status.get" ]
     } ],
     "metadata" : {
       "user" : {
@@ -518,7 +572,7 @@
       }
     },
     "launchDescriptor" : {
-      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2866",
+      "dockerImage" : "folioci/mod-search:6.1.0-SNAPSHOT.2874",
       "dockerPull" : true,
       "env" : [ {
         "name" : "ENV",
